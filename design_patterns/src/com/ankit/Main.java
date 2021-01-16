@@ -2,6 +2,10 @@ package com.ankit;
 
 import com.ankit.memento.Editor;
 import com.ankit.memento.History;
+import com.ankit.state.Canvas;
+import com.ankit.state.EraserTool;
+import com.ankit.state.SelectionTool;
+import com.ankit.state.Tool;
 
 public class Main {
 
@@ -50,6 +54,8 @@ public class Main {
         drawUIControl(new TextBox());
 
         // THE MEMENTO PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("MEMENTO PATTERN");
         var editor = new Editor();
         var history = new History();
 
@@ -64,6 +70,27 @@ public class Main {
         editor.restore(history.pop());
 
         System.out.println(editor.getContent());
+        System.out.println("--------------------------------");
+
+//        THE STATE PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("STATE PATTERN");
+
+        var canvas = new Canvas();
+        canvas.setCurrentTool(new EraserTool());
+        canvas.mouseDown();
+        canvas.mouseUp();
+        System.out.println("--------------------------------");
+
+
+        //  THE DESIGN PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("DESIGN PATTERN");
+        /*
+        *
+        * */
+
+        System.out.println("--------------------------------");
     }
 
     public static void drawUIControl(UIControl control){
