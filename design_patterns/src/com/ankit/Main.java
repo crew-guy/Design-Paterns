@@ -90,6 +90,7 @@ public class Main {
         stopwatch.click();
 
         System.out.println("--------------------------------");
+
         //  THE ITERATOR PATTERN
         System.out.println("--------------------------------");
         System.out.println("ITERATOR PATTERN");
