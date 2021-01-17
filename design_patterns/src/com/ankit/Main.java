@@ -1,5 +1,6 @@
 package com.ankit;
 
+import com.ankit.abusingStatePattern.Stopwatch;
 import com.ankit.memento.Editor;
 import com.ankit.memento.History;
 import com.ankit.state.Canvas;
@@ -82,10 +83,16 @@ public class Main {
         canvas.mouseUp();
         System.out.println("--------------------------------");
 
-
-        //  THE DESIGN PATTERN
+        // ABUSING THE STATE PATTERN
         System.out.println("--------------------------------");
-        System.out.println("DESIGN PATTERN");
+        System.out.println("ABUSING THE STATE PATTERN");
+        var stopwatch = new Stopwatch();
+        stopwatch.click();
+
+        System.out.println("--------------------------------");
+        //  THE ITERATOR PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("ITERATOR PATTERN");
         /*
         *
         * */
