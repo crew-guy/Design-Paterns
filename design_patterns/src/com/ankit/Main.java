@@ -1,6 +1,8 @@
 package com.ankit;
 
 import com.ankit.abusingStatePattern.Stopwatch;
+import com.ankit.iterator.BrowseHistory;
+import com.ankit.iterator.Iterator;
 import com.ankit.memento.Editor;
 import com.ankit.memento.History;
 import com.ankit.state.Canvas;
@@ -94,11 +96,28 @@ public class Main {
         //  THE ITERATOR PATTERN
         System.out.println("--------------------------------");
         System.out.println("ITERATOR PATTERN");
-        /*
-        *
-        * */
+        var iteratorHistory = new BrowseHistory();
+        iteratorHistory.push("a");
+        iteratorHistory.push("b");
+        iteratorHistory.push("c");
+
+        Iterator iterator = iteratorHistory.createIterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.current());
+            iterator.next();
+        }
+
 
         System.out.println("--------------------------------");
+
+        //  THE STRATEGY PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("STRATEGY PATTERN");
+        /*
+         *
+         * */
+        System.out.println("--------------------------------");
+
     }
 
     public static void drawUIControl(UIControl control){
