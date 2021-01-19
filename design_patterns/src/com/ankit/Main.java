@@ -9,6 +9,12 @@ import com.ankit.state.Canvas;
 import com.ankit.state.EraserTool;
 import com.ankit.state.SelectionTool;
 import com.ankit.state.Tool;
+import com.ankit.strategy.BandWFilter;
+import com.ankit.strategy.ImageStorage;
+import com.ankit.strategy.JpegCompressor;
+import com.ankit.strategy.PngCompressor;
+
+import java.awt.*;
 
 public class Main {
 
@@ -111,6 +117,14 @@ public class Main {
         System.out.println("--------------------------------");
 
         //  THE STRATEGY PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("STRATEGY PATTERN");
+        var imageStorage = new ImageStorage();
+        imageStorage.store("image1",new JpegCompressor(), new BandWFilter());
+        imageStorage.store("image1",new PngCompressor(), new BandWFilter());
+        System.out.println("--------------------------------");
+
+        //  THE TEMPLATE MODEL PATTERN
         System.out.println("--------------------------------");
         System.out.println("STRATEGY PATTERN");
         /*
