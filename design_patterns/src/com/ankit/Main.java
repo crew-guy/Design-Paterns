@@ -9,10 +9,10 @@ import com.ankit.state.Canvas;
 import com.ankit.state.EraserTool;
 import com.ankit.state.SelectionTool;
 import com.ankit.state.Tool;
-import com.ankit.strategy.BandWFilter;
-import com.ankit.strategy.ImageStorage;
-import com.ankit.strategy.JpegCompressor;
-import com.ankit.strategy.PngCompressor;
+import com.ankit.strategy.*;
+import com.ankit.templateMethod.GenerateReportTask;
+import com.ankit.templateMethod.Task;
+import com.ankit.templateMethod.TransferMoneyTask;
 
 import java.awt.*;
 
@@ -121,15 +121,16 @@ public class Main {
         System.out.println("STRATEGY PATTERN");
         var imageStorage = new ImageStorage();
         imageStorage.store("image1",new JpegCompressor(), new BandWFilter());
-        imageStorage.store("image1",new PngCompressor(), new BandWFilter());
+        imageStorage.store("image1",new PngCompressor(), new RGBFilter());
         System.out.println("--------------------------------");
 
         //  THE TEMPLATE MODEL PATTERN
         System.out.println("--------------------------------");
         System.out.println("STRATEGY PATTERN");
-        /*
-         *
-         * */
+        var task = new TransferMoneyTask();
+        task.execute();
+        var task2 = new GenerateReportTask();
+        task.execute();
         System.out.println("--------------------------------");
 
     }
