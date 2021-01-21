@@ -1,6 +1,9 @@
 package com.ankit;
 
 import com.ankit.abusingStatePattern.Stopwatch;
+import com.ankit.command.AddCustomerCommand;
+import com.ankit.command.CustomerService;
+import com.ankit.command.fx.Button;
 import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
 import com.ankit.memento.Editor;
@@ -126,13 +129,22 @@ public class Main {
 
         //  THE TEMPLATE MODEL PATTERN
         System.out.println("--------------------------------");
-        System.out.println("STRATEGY PATTERN");
+        System.out.println("TEMPLATE MODEL PATTERN");
         var task = new TransferMoneyTask();
         task.execute();
         var task2 = new GenerateReportTask();
         task.execute();
         System.out.println("--------------------------------");
 
+        //  THE COMMAND PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("COMMAND PATTERN");
+        var service = new CustomerService();
+        var command = new AddCustomerCommand(service);
+        var button = new Button(command);
+        button.click();
+
+        System.out.println("--------------------------------");
     }
 
     public static void drawUIControl(UIControl control){
