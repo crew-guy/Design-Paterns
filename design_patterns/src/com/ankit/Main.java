@@ -1,8 +1,7 @@
 package com.ankit;
 
 import com.ankit.abusingStatePattern.Stopwatch;
-import com.ankit.command.AddCustomerCommand;
-import com.ankit.command.CustomerService;
+import com.ankit.command.*;
 import com.ankit.command.fx.Button;
 import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
@@ -10,14 +9,9 @@ import com.ankit.memento.Editor;
 import com.ankit.memento.History;
 import com.ankit.state.Canvas;
 import com.ankit.state.EraserTool;
-import com.ankit.state.SelectionTool;
-import com.ankit.state.Tool;
 import com.ankit.strategy.*;
 import com.ankit.templateMethod.GenerateReportTask;
-import com.ankit.templateMethod.Task;
 import com.ankit.templateMethod.TransferMoneyTask;
-
-import java.awt.*;
 
 public class Main {
 
@@ -143,8 +137,15 @@ public class Main {
         var command = new AddCustomerCommand(service);
         var button = new Button(command);
         button.click();
-
         System.out.println("--------------------------------");
+        System.out.println("COMPOSITE COMMANDS (using the command pattern)");
+        var blackAndWhiteCmd = new BlackAndWhite();
+        var woodenFrameCmd = new WoodenFrame();
+        var compositeCmd = new CompositeCommand();
+        compositeCmd.addCommand(blackAndWhiteCmd);
+        compositeCmd.addCommand(woodenFrameCmd);
+        compositeCmd.execute();
+
     }
 
     public static void drawUIControl(UIControl control){
