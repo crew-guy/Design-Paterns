@@ -2,7 +2,13 @@ package com.ankit;
 
 import com.ankit.abusingStatePattern.Stopwatch;
 import com.ankit.command.*;
+import com.ankit.command.compositeCommand.BlackAndWhite;
+import com.ankit.command.compositeCommand.CompositeCommand;
+import com.ankit.command.compositeCommand.WoodenFrame;
 import com.ankit.command.fx.Button;
+import com.ankit.command.undo.BoldCommand;
+import com.ankit.command.undo.HtmlDoc;
+import com.ankit.command.undo.UndoCommand;
 import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
 import com.ankit.memento.Editor;
@@ -138,13 +144,30 @@ public class Main {
         var button = new Button(command);
         button.click();
         System.out.println("--------------------------------");
-        System.out.println("COMPOSITE COMMANDS (using the command pattern)");
+        System.out.println("Composite Commands` (using the command pattern)");
         var blackAndWhiteCmd = new BlackAndWhite();
         var woodenFrameCmd = new WoodenFrame();
         var compositeCmd = new CompositeCommand();
         compositeCmd.addCommand(blackAndWhiteCmd);
         compositeCmd.addCommand(woodenFrameCmd);
         compositeCmd.execute();
+        System.out.println("--------------------------------");
+        System.out.println("Implementing undo using the command pattern");
+        var document = new HtmlDoc();
+        var historyOfCmds = new com.ankit.command.undo.History();
+        var boldCommand = new BoldCommand(document,historyOfCmds);
+        document.setContent("Namaskar !");
+        System.out.println(document.getContent());
+
+        boldCommand.execute();
+        System.out.println(document.getContent());
+
+        var undoCommand = new UndoCommand(historyOfCmds);
+        undoCommand.execute();
+        System.out.println(document.getContent());
+
+        System.out.println("--------------------------------");
+
 
     }
 

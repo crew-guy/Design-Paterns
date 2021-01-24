@@ -1,4 +1,4 @@
-package com.ankit.command;
+package com.ankit.command.compositeCommand;
 
 import com.ankit.command.fx.Command;
 
