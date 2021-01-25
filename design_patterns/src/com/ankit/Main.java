@@ -13,6 +13,9 @@ import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
 import com.ankit.memento.Editor;
 import com.ankit.memento.History;
+import com.ankit.observer.Chart;
+import com.ankit.observer.DataSource;
+import com.ankit.observer.Spreadsheet;
 import com.ankit.state.Canvas;
 import com.ankit.state.EraserTool;
 import com.ankit.strategy.*;
@@ -166,6 +169,21 @@ public class Main {
         undoCommand.execute();
         System.out.println(document.getContent());
 
+        System.out.println("--------------------------------");
+
+        //  THE OBSERVER PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("OBSERVER PATTERN");
+        var dataSrc = new DataSource();
+        var sheet1 = new Spreadsheet();
+        var sheet2 = new Spreadsheet();
+        var chart = new Chart();
+
+        dataSrc.addObserver(sheet1);
+        dataSrc.addObserver(sheet2);
+        dataSrc.addObserver(chart);
+
+        dataSrc.setValue(1);
         System.out.println("--------------------------------");
 
 
