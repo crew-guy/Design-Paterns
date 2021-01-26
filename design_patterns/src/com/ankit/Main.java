@@ -11,6 +11,7 @@ import com.ankit.command.undo.HtmlDoc;
 import com.ankit.command.undo.UndoCommand;
 import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
+import com.ankit.mediator.ArticlesDialogBox;
 import com.ankit.memento.Editor;
 import com.ankit.memento.History;
 import com.ankit.observer.Chart;
@@ -186,7 +187,21 @@ public class Main {
         dataSrc.setValue(1);
         System.out.println("--------------------------------");
 
+        //  THE MEDIATOR PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("MEDIATOR PATTERN");
+        var articleDialogBox = new ArticlesDialogBox();
+        articleDialogBox.simulateUserInteraction();
 
+        System.out.println("--------------------------------");
+
+        //  THE MEDIATOR PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("MEDIATOR PATTERN");
+        var articleDialogBox = new ArticlesDialogBox();
+        articleDialogBox.simulateUserInteraction();
+
+        System.out.println("--------------------------------");
     }
 
     public static void drawUIControl(UIControl control){

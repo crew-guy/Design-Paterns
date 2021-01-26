@@ -9,6 +9,6 @@ public class DataSource extends Subject {
 
     public void setValue(Integer value) {
         this.value = value;
-        notifyObservers();
+        notifyObservers(value);
     }
 }
