@@ -1,6 +1,8 @@
 package com.ankit;
 
 import com.ankit.abusingStatePattern.Stopwatch;
+import com.ankit.chainOfResponsibility.*;
+import com.ankit.chainOfResponsibility.Compressor;
 import com.ankit.command.*;
 import com.ankit.command.compositeCommand.BlackAndWhite;
 import com.ankit.command.compositeCommand.CompositeCommand;
@@ -192,14 +194,19 @@ public class Main {
         System.out.println("MEDIATOR PATTERN");
         var articleDialogBox = new ArticlesDialogBox();
         articleDialogBox.simulateUserInteraction();
-
         System.out.println("--------------------------------");
 
-        //  THE MEDIATOR PATTERN
+        //  THE CHAIN OF RESPONSIBILITY PATTERN
         System.out.println("--------------------------------");
-        System.out.println("MEDIATOR PATTERN");
-        var articleDialogBox = new ArticlesDialogBox();
-        articleDialogBox.simulateUserInteraction();
+        System.out.println("CHAIN OF RESPONSIBILITY PATTERN");
+        // authentication -> compressing -> logging
+        var logger = new Logger(null);
+        var compressor = new Compressor(logger);
+        var authenticator = new Authenticator(compressor);
+        var webServer = new WebServer(authenticator);
+
+        var request = new HttpRequest("admin", "admin1234");
+        webServer.handle(request);
 
         System.out.println("--------------------------------");
     }
