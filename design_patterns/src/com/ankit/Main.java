@@ -24,6 +24,7 @@ import com.ankit.state.EraserTool;
 import com.ankit.strategy.*;
 import com.ankit.templateMethod.GenerateReportTask;
 import com.ankit.templateMethod.TransferMoneyTask;
+import com.ankit.visitor.*;
 
 public class Main {
 
@@ -209,6 +210,27 @@ public class Main {
         webServer.handle(request);
 
         System.out.println("--------------------------------");
+
+        //  THE VISITOR PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("VISITOR PATTERN");
+        var htmlDocument = new HtmlDocument();
+        var headingNode= new HeadingNode();
+        var anchorNode = new AnchorTagNode();
+        htmlDocument.add(headingNode);
+        htmlDocument.add(anchorNode);
+        System.out.println("Extracting plain text from html tags....");
+        htmlDocument.execute(new PlainTextOperation());
+        System.out.println("Highlighting html tags.......");
+        htmlDocument.execute(new HighlightOperation());
+        System.out.println("--------------------------------");
+
+        //  THE COMPOSITE PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("COMPOSITE PATTERN");
+        System.out.println("--------------------------------");
+
+
     }
 
     public static void drawUIControl(UIControl control){
