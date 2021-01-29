@@ -1,9 +1,10 @@
 package com.ankit;
 
 import com.ankit.abusingStatePattern.Stopwatch;
-import com.ankit.chainOfResponsibility.*;
 import com.ankit.chainOfResponsibility.Compressor;
-import com.ankit.command.*;
+import com.ankit.chainOfResponsibility.*;
+import com.ankit.command.AddCustomerCommand;
+import com.ankit.command.CustomerService;
 import com.ankit.command.compositeCommand.BlackAndWhite;
 import com.ankit.command.compositeCommand.CompositeCommand;
 import com.ankit.command.compositeCommand.WoodenFrame;
@@ -11,6 +12,8 @@ import com.ankit.command.fx.Button;
 import com.ankit.command.undo.BoldCommand;
 import com.ankit.command.undo.HtmlDoc;
 import com.ankit.command.undo.UndoCommand;
+import com.ankit.composite.Group;
+import com.ankit.composite.Shape;
 import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
 import com.ankit.mediator.ArticlesDialogBox;
@@ -141,6 +144,7 @@ public class Main {
         task.execute();
         var task2 = new GenerateReportTask();
         task.execute();
+        task2.execute();
         System.out.println("--------------------------------");
 
         //  THE COMMAND PATTERN
@@ -228,9 +232,27 @@ public class Main {
         //  THE COMPOSITE PATTERN
         System.out.println("--------------------------------");
         System.out.println("COMPOSITE PATTERN");
+        var shape1 = new Shape();
+        var shape2 = new Shape();
+        var shape3 = new Shape();
+        var shape4 = new Shape();
+        var group1 = new Group();
+        var group2 = new Group();
+        var group = new Group();
+        group1.add(shape1);
+        group1.add(shape2);
+        group2.add(shape3);
+        group2.add(shape4);
+        group.add(group1);
+        group.add(group2);
+        group.render();
+        group.move();
         System.out.println("--------------------------------");
 
-
+        //  THE ADAPTER PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("ADAPTER PATTERN");
+        System.out.println("--------------------------------");
     }
 
     public static void drawUIControl(UIControl control){
