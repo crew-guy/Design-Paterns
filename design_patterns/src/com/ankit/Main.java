@@ -1,6 +1,8 @@
 package com.ankit;
 
 import com.ankit.abusingStatePattern.Stopwatch;
+import com.ankit.adapter.*;
+import com.ankit.adapter.thirdPartyFilters.CaramelFilter;
 import com.ankit.chainOfResponsibility.Compressor;
 import com.ankit.chainOfResponsibility.*;
 import com.ankit.command.AddCustomerCommand;
@@ -252,6 +254,11 @@ public class Main {
         //  THE ADAPTER PATTERN
         System.out.println("--------------------------------");
         System.out.println("ADAPTER PATTERN");
+        var image = new Image();
+        var imageView = new ImageView(image);
+        imageView.apply(new VividFilter());
+        imageView.apply(new CaramelAdapterOne(new CaramelFilter()));
+        imageView.apply(new CaramelAdapterTwo());
         System.out.println("--------------------------------");
     }
 
