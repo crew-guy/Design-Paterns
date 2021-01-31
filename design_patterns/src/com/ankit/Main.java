@@ -16,6 +16,10 @@ import com.ankit.command.undo.HtmlDoc;
 import com.ankit.command.undo.UndoCommand;
 import com.ankit.composite.Group;
 import com.ankit.composite.Shape;
+import com.ankit.decorator.CloudStream;
+import com.ankit.decorator.CompressedCloudStream;
+import com.ankit.decorator.EncryptedCloudStream;
+import com.ankit.decorator.Stream;
 import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
 import com.ankit.mediator.ArticlesDialogBox;
@@ -260,6 +264,20 @@ public class Main {
         imageView.apply(new CaramelAdapterOne(new CaramelFilter()));
         imageView.apply(new CaramelAdapterTwo());
         System.out.println("--------------------------------");
+
+        //  THE DECORATOR PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("DECORATOR PATTERN");
+        var stream = new CloudStream();
+        var encryptedStream = new EncryptedCloudStream(stream);
+        var compressedStream = new CompressedCloudStream(encryptedStream);
+        storeCreditCard(compressedStream);
+        var stream2 = new EncryptedCloudStream(new CompressedCloudStream(new EncryptedCloudStream(new CloudStream())));
+        storeCreditCard(stream2);
+        System.out.println("--------------------------------");
+    }
+    public static void storeCreditCard(Stream stream){
+        stream.write("1234-1234-1234-1234");
     }
 
     public static void drawUIControl(UIControl control){
