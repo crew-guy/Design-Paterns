@@ -21,6 +21,9 @@ import com.ankit.decorator.CompressedCloudStream;
 import com.ankit.decorator.EncryptedCloudStream;
 import com.ankit.decorator.Stream;
 import com.ankit.facade.NotificationService;
+import com.ankit.flyweight.PointIconFactory;
+import com.ankit.flyweight.PointService;
+import com.ankit.flyweight.PointType;
 import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
 import com.ankit.mediator.ArticlesDialogBox;
@@ -282,6 +285,20 @@ public class Main {
         System.out.println("FACADE PATTERN");
         var notifService = new NotificationService();
         notifService.send("Hi !", "21421fq98v0ca");
+        System.out.println("--------------------------------");
+
+        //  THE FLYWEIGHT PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("FLYWEIGHT PATTERN");
+        var pointService = new PointService(new PointIconFactory());
+        pointService.addPointOnMap(2,4, PointType.CAFE,null);
+        pointService.addPointOnMap(21,434, PointType.GARDEN,null);
+        pointService.addPointOnMap(436,12, PointType.HOSPITAL,null);
+        pointService.addPointOnMap(245,546, PointType.SCHOOL,null);
+        pointService.addPointOnMap(5,74, PointType.GARDEN,null);
+        pointService.addPointOnMap(78,67, PointType.SCHOOL,null);
+        pointService.drawMap();
+
         System.out.println("--------------------------------");
     }
     public static void storeCreditCard(Stream stream){
