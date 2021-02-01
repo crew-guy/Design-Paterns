@@ -1,8 +1,8 @@
 package com.ankit.flyweight;
 
 public class PointIcon {
-    private final PointType type;
-    private final byte[] icon;
+    private final PointType type; // 4 bytes
+    private final byte[] icon; // 20 KB
 
     public PointIcon(PointType type, byte[] icon) {
         this.type = type;

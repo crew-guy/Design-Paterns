@@ -1,4 +1,3 @@
 package com.ankit.facade;
 
-public class AuthToken {
-}
+public class AuthToken {}
