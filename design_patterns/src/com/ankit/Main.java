@@ -20,6 +20,7 @@ import com.ankit.decorator.CloudStream;
 import com.ankit.decorator.CompressedCloudStream;
 import com.ankit.decorator.EncryptedCloudStream;
 import com.ankit.decorator.Stream;
+import com.ankit.facade.NotificationService;
 import com.ankit.iterator.BrowseHistory;
 import com.ankit.iterator.Iterator;
 import com.ankit.mediator.ArticlesDialogBox;
@@ -274,6 +275,13 @@ public class Main {
         storeCreditCard(compressedStream);
         var stream2 = new EncryptedCloudStream(new CompressedCloudStream(new EncryptedCloudStream(new CloudStream())));
         storeCreditCard(stream2);
+        System.out.println("--------------------------------");
+
+        //  THE FACADE PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("FACADE PATTERN");
+        var notifService = new NotificationService();
+        notifService.send("Hi !", "21421fq98v0ca");
         System.out.println("--------------------------------");
     }
     public static void storeCreditCard(Stream stream){
