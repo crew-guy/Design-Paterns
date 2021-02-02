@@ -3,6 +3,10 @@ package com.ankit;
 import com.ankit.abusingStatePattern.Stopwatch;
 import com.ankit.adapter.*;
 import com.ankit.adapter.thirdPartyFilters.CaramelFilter;
+import com.ankit.bridge.AdvancedRemoteControl;
+import com.ankit.bridge.RemoteControl;
+import com.ankit.bridge.SamsungTV;
+import com.ankit.bridge.SonyTV;
 import com.ankit.chainOfResponsibility.Compressor;
 import com.ankit.chainOfResponsibility.*;
 import com.ankit.command.AddCustomerCommand;
@@ -299,6 +303,15 @@ public class Main {
         pointService.addPointOnMap(78,67, PointType.SCHOOL,null);
         pointService.drawMap();
 
+        System.out.println("--------------------------------");
+
+        //  THE BRIDGE PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("BRIDGE PATTERN");
+        var sonyRemoteControl = new RemoteControl(new SonyTV());
+        sonyRemoteControl.turnOff();
+        var advancedSamsungRemoteControl = new AdvancedRemoteControl(new SamsungTV());
+        advancedSamsungRemoteControl.setChannel(4);
         System.out.println("--------------------------------");
     }
     public static void storeCreditCard(Stream stream){
