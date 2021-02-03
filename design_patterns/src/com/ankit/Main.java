@@ -36,6 +36,10 @@ import com.ankit.memento.History;
 import com.ankit.observer.Chart;
 import com.ankit.observer.DataSource;
 import com.ankit.observer.Spreadsheet;
+import com.ankit.proxy.EbookLoggingProxy;
+import com.ankit.proxy.EbookProxy;
+import com.ankit.proxy.Library;
+import com.ankit.proxy.RealEbook;
 import com.ankit.state.Canvas;
 import com.ankit.state.EraserTool;
 import com.ankit.strategy.*;
@@ -312,6 +316,19 @@ public class Main {
         sonyRemoteControl.turnOff();
         var advancedSamsungRemoteControl = new AdvancedRemoteControl(new SamsungTV());
         advancedSamsungRemoteControl.setChannel(4);
+        System.out.println("--------------------------------");
+
+        //  THE PROXY PATTERN
+        System.out.println("--------------------------------");
+        System.out.println("PROXY PATTERN");
+        var library = new Library();
+        String [] filenames = {"Sapiens", "Zero to One", "$1OO Startup"};
+        System.out.println("--------------------------------");
+        for(var filename : filenames){
+            library.add(new EbookLoggingProxy(filename));
+        }
+        library.openEbook("Sapiens");
+        library.openEbook("Zero to One");
         System.out.println("--------------------------------");
     }
     public static void storeCreditCard(Stream stream){
